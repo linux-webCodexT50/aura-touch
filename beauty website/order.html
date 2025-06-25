@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order – Aura Touch</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #fff8fc;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .order-form {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff0f5;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .order-form h2 {
+      text-align: center;
+      color: #d63384;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    form button {
+      background: #d63384;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+    }
+
+    form button:hover {
+      background: #c2186a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="order-form">
+    <h2>Place Your Order</h2>
+    <form action="https://formsubmit.kpalamgeorgina1.com" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <select name="product" required>
+        <option value="">Select Product</option>
+        <option value="Shiny Lip Gloss">Shiny Lip Gloss</option>
+        <option value="Hair Extension">Hair Extension</option>
+        <option value="Rose Hand Cream">Rose Hand Cream</option>
+        <option value="Lip Mask">Lip Mask</option>
+      </select>
+      <button type="submit">Submit Order</button>
+    </form>
+  </div>
+
+</body>
+</html>

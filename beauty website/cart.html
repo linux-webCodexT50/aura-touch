@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Cart – Aura Touch</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8fc;
+      padding: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    th {
+      background-color: #ffd8ec;
+      color: #d63384;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fff0f5;
+    }
+
+    .total {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 200px;
+      margin: 2rem auto 0;
+      padding: 0.8rem;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+      background-color: #c2186a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🛍️ Your Cart</h2>
+
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Unit Price (GHC)</th>
+        <th>Quantity</th>
+        <th>Total (GHC)</th>
+      </tr>
+    </thead>
+    <tbody id="cart-items">
+      <!-- Cart items will appear here -->
+    </tbody>
+  </table>
+
+  <div class="total" id="cart-total">Total: GHC 0.00</div>
+
+  <button class="checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem('auraCart')) || [];
+    const groupedItems = {};
+
+    // Group items by name to calculate quantity
+    cartItems.forEach(item => {
+      if (groupedItems[item.name]) {
+        groupedItems[item.name].quantity += 1;
+      } else {
+        groupedItems[item.name] = {
+          price: item.price,
+          quantity: 1
+        };
+      }
+    });
+
+    const cartTable = document.getElementById('cart-items');
+    const totalDisplay = document.getElementById('cart-total');
+    let total = 0;
+
+    Object.entries(groupedItems).forEach(([name, data]) => {
+      const itemTotal = data.price * data.quantity;
+      total += itemTotal;
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${data.price.toFixed(2)}</td>
+        <td>${data.quantity}</td>
+        <td>${itemTotal.toFixed(2)}</td>
+      `;
+      cartTable.appendChild(row);
+    });
+
+    totalDisplay.textContent = 'Total: GHC ' + total.toFixed(2);
+
+    function goToCheckout() {
+      window.location.href = 'checkout.html';
+    }
+  </script>
+
+</body>
+</html>

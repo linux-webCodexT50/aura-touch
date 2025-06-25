@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura Touch – Shop</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    header nav {
+      background-color: #d63384;
+      padding: 1rem;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .shop-section {
+      padding: 3rem 2rem;
+      background-color: #fff0f5;
+    }
+
+    .shop-section h2 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 2rem;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 2rem;
+      padding: 1rem 2rem;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      color: #d63384;
+      margin: 0.5rem 0;
+    }
+
+    .product p, .product span {
+      font-weight: bold;
+      margin: 0.3rem 0;
+    }
+
+    .product button {
+      padding: 0.6rem 1.2rem;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #c2186a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #fff;
+      color: black;
+      font-weight: bold;
+      border-top: 1px solid #ccc;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contacts.html">Contact</a></li>
+      <li><a href="checkout.html">🛒 Cart</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="shop-section">
+  <h2>Shop All Products</h2>
+
+  <a class="checkout-btn" href="checkout.html">Go to Checkout</a>
+
+  <div class="product-grid">
+
+    <div class="product">
+      <img src="image/lipgloss.jpg" alt="Lip Gloss">
+      <h3>Shiny Lip Gloss</h3>
+      <p>GHC 35.00</p>
+      <button onclick="addToCart('Shiny Lip Gloss', 20)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/handcream.jpg" alt="Hand Cream">
+      <h3>Rose Hand Cream</h3>
+      <p>GHC 25.00</p>
+      <button onclick="addToCart('Rose Hand Cream', 25)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/hair.jpg" alt="Hair Extension">
+      <h3>Silky Hair Extension</h3>
+      <p>GHC 70.00</p>
+      <button onclick="addToCart('Silky Hair Extension', 70)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/lipmask.jpg" alt="Lip Mask">
+      <h3>Hydrating Lip Mask</h3>
+      <p>GHC 15.00</p>
+      <button onclick="addToCart('Hydrating Lip Mask', 15)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/soap.jpg" alt="Lordis Beauty Alata Soap">
+      <h3>Lordis Beauty Alata Soap</h3>
+      <p>Herbal soap for smooth and glowing skin.</p>
+      <span>GHS 35</span>
+      <button onclick="addToCart('Lordis Beauty Alata Soap', 35)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/dudu.jpg" alt="Dudu Osun Natural Soap">
+      <h3>Dudu Osun Natural Soap</h3>
+      <p>African black soap for natural cleansing.</p>
+      <span>GHS 17</span>
+      <button onclick="addToCart('Dudu Osun Natural Soap', 17)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/lip scrub.jpg" alt="Lip Scrub">
+      <h3>Lip Scrub</h3>
+      <p>Gently exfoliates and softens lips.</p>
+      <span>GHS 30</span>
+      <button onclick="addToCart('Lip Scrub', 30)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/lip balm.jpg" alt="Lip Balm">
+      <h3>Lip Balm</h3>
+      <p>Moisturizes and protects your lips all day.</p>
+      <span>GHS 20</span>
+      <button onclick="addToCart('Lip Balm', 20)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/lashe.jpg" alt="Lashes">
+      <h3>Lashes</h3>
+      <p>Fluffy, reusable lashes for a stunning look.</p>
+      <span>GHS 30</span>
+      <button onclick="addToCart('Lashes', 30)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/headband.jpg" alt="Head Band">
+      <h3>Head Band</h3>
+      <p>Stylish band to keep your hair in place.</p>
+      <span>GHS 15</span>
+      <button onclick="addToCart('Head Band', 15)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="image/scenchies 2.jpg" alt="Scrunchies">
+      <h3>Scrunchies</h3>
+      <p>Soft, colorful scrunchies for any occasion.</p>
+      <span>GHS 10</span>
+      <button onclick="addToCart('Scrunchies', 10)">Add to Cart</button>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  © 2025 Aura Touch. All rights reserved.
+</footer>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem("auraCart") || "[]");
+
+  function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ name, price, quantity: 1 });
+    }
+
+    localStorage.setItem("auraCart", JSON.stringify(cart));
+    alert(name + " added to cart!");
+  }
+</script>
+
+</body>
+</html>

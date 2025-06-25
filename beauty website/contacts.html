@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacts – Aura Touch</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #ffe6f0);
+      color: #444;
+    }
+
+    header {
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f4c2d7;
+    }
+
+    header .logo img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #d63384;
+      font-weight: bold;
+    }
+
+    nav ul li a.active {
+      color: #b2256d;
+      border-bottom: 2px solid #d63384;
+    }
+
+    main.contacts {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    main.contacts h2 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #666;
+    }
+
+    .contacts-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .contacts-card {
+      background-color: #fff0f5;
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .contacts-card h3 {
+      color: #d63384;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #d63384;
+      color: white;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      background-color: #b2256d;
+    }
+
+    .feedback-section {
+      text-align: center;
+      background-color: #fff8fc;
+      padding: 2rem;
+      border-radius: 15px;
+    }
+
+    .feedback-section h2 {
+      color: #d63384;
+      margin-bottom: 0.5rem;
+    }
+
+    .feedback-section p {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .newsletter-form input[type="email"] {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      background-color: #b2256d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #fff;
+      border-top: 1px solid #f4c2d7;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="image/aura image.png.png" alt="Aura Touch Logo" /></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contacts.html" class="active">Contacts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contacts">
+    <h2>We'd Love to Hear From You 💌</h2>
+    <p class="intro">Let’s connect! Whether you have a question, feedback, or want to collaborate — Aura Touch is just a message away.</p>
+
+    <div class="contacts-options">
+  <div class="contacts-card">
+    <h3>📱 WhatsApp</h3>
+    <p>Chat directly with our team.</p>
+    <a class="cta-btn" href="https://wa.me/233531452555" target="_blank">Message Us</a>
+  </div>
+
+  <div class="contacts-card">
+    <h3>📸 Instagram</h3>
+    <p>Follow us for updates and glam shots.</p>
+    <a class="cta-btn" href="https://instagram.com/yourpage" target="_blank">@AuraTouch</a>
+  </div>
+
+  <div class="contacts-card">
+    <h3>📧 Email</h3>
+    <p>Prefer email? We’ve got you covered.</p>
+    <a class="cta-btn" href="mailto:kpalamgeorgina1@gmail.com">Send Email</a>
+  </div>
+
+  <div class="contacts-card">
+    <h3>🎵 TikTok</h3>
+    <p>Catch our latest videos and trends!</p>
+    <a class="cta-btn" href="https://tiktok.com/@Aura.Touch4" target="_blank">@Aura.Touch4</a>
+  </div>
+</div>
+
+    </div>
+
+    <section class="feedback-section">
+      <h2>Your Feedback Matters ✨</h2>
+      <p>We’d love to know how you feel about our products, service, or site!</p>
+      <form action="https://formsubmit.co/kpalamgeorgina1@gmail.com" method="POST" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email address" required />
+        <input type="hidden" name="_subject" value="New Newsletter Subscription from Aura Touch" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="thankyou.html" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Aura Touch. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
