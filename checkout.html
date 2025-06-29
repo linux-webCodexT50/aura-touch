@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout – Aura Touch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #ffe6f0);
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #d63384;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .cart-items {
+      margin-bottom: 2rem;
+    }
+
+    .cart-items table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cart-items th, .cart-items td {
+      text-align: left;
+      padding: 0.8rem;
+      border-bottom: 1px solid #f0d9e7;
+    }
+
+    .cart-items th {
+      color: #b2256d;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #d63384;
+      margin-top: 1rem;
+    }
+
+    .checkout-form input, .checkout-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .checkout-form button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .checkout-form button:hover {
+      background-color: #b2256d;
+    }
+  </style>
+</head>
+<body>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<div class="container">
+  <h1>🧾 Checkout</h1>
+
+  <div class="cart-items">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Price (GHS)</th>
+        </tr>
+      </thead>
+      <tbody id="cartItems">
+        <!-- Items will appear here -->
+      </tbody>
+    </table>
+    <div class="total">Total: <span id="totalPrice">GHS 0</span></div>
+  </div>
+
+  <form class="checkout-form" id="checkoutForm">
+    <input type="text" id="fullname" placeholder="Full Name" required />
+    <input type="tel" id="phone" placeholder="Phone Number" required />
+    <input type="email" id="email" placeholder="Email Address" required />
+    <textarea id="address" placeholder="Delivery Address" required></textarea>
+
+    <button type="button" onclick="payWithPaystack()">Pay with Mobile Money</button>
+  </form>
+</div>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem("auraCart") || "[]");
+  const cartItemsContainer = document.getElementById("cartItems");
+  const totalPriceEl = document.getElementById("totalPrice");
+
+  let total = 0;
+  cart.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.quantity || 1}</td>
+      <td>${(item.price * (item.quantity || 1)).toFixed(2)}</td>
+    `;
+    total += item.price * (item.quantity || 1);
+    cartItemsContainer.appendChild(row);
+  });
+
+  totalPriceEl.textContent = "GHS " + total.toFixed(2);
+
+  function payWithPaystack() {
+    const email = document.getElementById("email").value;
+    const amount = total * 100; // convert to pesewas
+
+    if (!email) {
+      alert("Please fill out your email.");
+      return;
+    }
+
+    let handler = PaystackPop.setup({
+      key: 'pk_test_6602e2f24841da85cf9113764b88ebec3d0db70a', // Replace with your public key
+      email: email,
+      amount: amount,
+      currency: 'GHS',
+      callback: function(response) {
+        alert("Payment successful! Reference: " + response.reference);
+        localStorage.removeItem("auraCart");
+        window.location.href = "thankyou.html";
+      },
+      onClose: function() {
+        alert("Payment was cancelled.");
+      }
+    });
+    handler.openIframe();
+  }
+</script>
+
+</body>
+</html>
